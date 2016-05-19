@@ -1,7 +1,5 @@
-package s0542425
+object MuenzStueckelung {
 
-object MuenzStueckelung {  
-  
   def main(args: Array[String]){
     println(muenzStueck(8, List(1,2,5,10,20,50,100)))
   }

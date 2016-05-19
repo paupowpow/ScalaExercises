@@ -1,6 +1,4 @@
-package s0542425
-
-object SimpleList {  
+object SimpleList {
   
   def main(args: Array[String]){
     val my_numbers : List[Int] = List(8,0,8,0,9,2,3,4)

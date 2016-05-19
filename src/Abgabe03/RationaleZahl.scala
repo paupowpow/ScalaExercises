@@ -1,6 +1,4 @@
-package s0542425
-
-case class RationaleZahl (zaehler: Int, nenner: Int) {  
+case class RationaleZahl (zaehler: Int, nenner: Int) {
   
   require(nenner != 0, "Nenner darf nicht 0 sein!")
   

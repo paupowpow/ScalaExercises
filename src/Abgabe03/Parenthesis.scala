@@ -1,5 +1,3 @@
-package s0542425
-
 object Parenthesis {
   
   def main(args: Array[String]){

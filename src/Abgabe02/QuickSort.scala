@@ -1,5 +1,3 @@
-package s0542425
-
 object QuickSort {
 
   def main(args: Array[String]){

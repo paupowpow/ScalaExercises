@@ -1,6 +1,4 @@
-package s0542425
-
-object ZaehlZeichen {  
+object ZaehlZeichen {
   
   def main(args: Array[String]){   
     val my_string = "abccddddd"
