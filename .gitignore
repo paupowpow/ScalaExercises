@@ -15,5 +15,10 @@ project/plugins/project/
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
+
+# Added by repo owner
 ScalaExercises.iml
 .idea
+
+# MAC OS specific
+*.DS_Store
