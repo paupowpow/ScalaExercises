@@ -1,4 +1,4 @@
-# Aufgaben
+# Scala Exercises
 
 ## Aufgabe 1 (1. Abgabe)
 
