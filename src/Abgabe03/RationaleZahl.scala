@@ -12,14 +12,14 @@ case class RationaleZahl (zaehler: Int, nenner: Int) {
     loop(abs(zahl1), abs(zahl2))
   }
 
-  override def toString(): String = z + "/" + n;
-
   def add(r: RationaleZahl) = new RationaleZahl(z*r.n + r.z*n, n*r.n)
   def subtract(r: RationaleZahl) = new RationaleZahl(z*r.n - r.z*n, n*r.n)
   def multiply(r: RationaleZahl) = new RationaleZahl(z*r.z, n*r.n)
   def divide(r: RationaleZahl) = new RationaleZahl(z/r.z, n/r.n)
 
   def this(zaehler: Int) = this(zaehler, 1)
+
+  override def toString(): String = z + "/" + n;
 }
 
 object RationaleZahl {
