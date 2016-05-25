@@ -19,6 +19,8 @@ case class RationaleZahl (zaehler: Int, nenner: Int) {
 
   def this(zaehler: Int) = this(zaehler, 1)
 
+  def equals(zahl2: RationaleZahl): Boolean = if ((z == zahl2.z) && (n == zahl2.n)) true else false
+
   override def toString(): String = z + "/" + n;
 }
 
@@ -34,5 +36,6 @@ object RationaleZahl {
     println(zahl2)
     println(zahl1.add(zahl2))
     println(zahl3.multiply(zahl4))
+    println(zahl1.equals(zahl3))
   }
 }
