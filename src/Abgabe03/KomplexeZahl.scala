@@ -13,10 +13,10 @@ case class KomplexeZahl(re: Double, im: Double) {
 
   def unary_- = KomplexeZahl(-re, -im)
 
-  def add(k: KomplexeZahl) = KomplexeZahl(re+k.re, im+k.im)
-  def subtract(k: KomplexeZahl) = KomplexeZahl(re-k.re, im-k.im)
-  def multiply(k: KomplexeZahl) = KomplexeZahl(re*k.re - im*k.im, re*k.im + im*k.re)
-  def divide(k: KomplexeZahl) = KomplexeZahl((re*k.re + im*k.im) / quad, (im*k.re - re*k.im)/quad)
+  def +(k: KomplexeZahl) = KomplexeZahl(re+k.re, im+k.im)
+  def -(k: KomplexeZahl) = KomplexeZahl(re-k.re, im-k.im)
+  def *(k: KomplexeZahl) = KomplexeZahl(re*k.re - im*k.im, re*k.im + im*k.re)
+  def /(k: KomplexeZahl) = KomplexeZahl((re*k.re + im*k.im) / quad, (im*k.re - re*k.im)/quad)
 
 
   override def toString = re + " + i * " + im
@@ -29,10 +29,10 @@ object KomplexeZahl {
 
     println(zahl1)
     println(zahl2)
-    println(zahl1.add(zahl2))
-    println(zahl2.subtract(zahl1))
-    println(zahl1.multiply(zahl2))
-    println(zahl1.divide(zahl2))
+    println(zahl1 + zahl2)
+    println(zahl2 - zahl1)
+    println(zahl1 * zahl2)
+    println(zahl1 / zahl2)
     println(zahl1.quad)
     println(zahl1.invers)
     println(-zahl1)
