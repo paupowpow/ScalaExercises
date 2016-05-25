@@ -1,3 +1,6 @@
+/**
+  * Created by paulahaertel on 25.05.16.
+  */
 case class RationaleZahl (zaehler: Int, nenner: Int) {
 
   require(nenner != 0)
