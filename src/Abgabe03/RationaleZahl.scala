@@ -12,10 +12,10 @@ case class RationaleZahl (zaehler: Int, nenner: Int) {
     loop(abs(zahl1), abs(zahl2))
   }
 
-  def add(r: RationaleZahl) = new RationaleZahl(z*r.n + r.z*n, n*r.n)
-  def subtract(r: RationaleZahl) = new RationaleZahl(z*r.n - r.z*n, n*r.n)
-  def multiply(r: RationaleZahl) = new RationaleZahl(z*r.z, n*r.n)
-  def divide(r: RationaleZahl) = new RationaleZahl(z/r.z, n/r.n)
+  def +(r: RationaleZahl) = new RationaleZahl(z*r.n + r.z*n, n*r.n)
+  def -(r: RationaleZahl) = new RationaleZahl(z*r.n - r.z*n, n*r.n)
+  def *(r: RationaleZahl) = new RationaleZahl(z*r.z, n*r.n)
+  def /(r: RationaleZahl) = new RationaleZahl(z/r.z, n/r.n)
 
   def this(zaehler: Int) = this(zaehler, 1)
 
@@ -34,8 +34,8 @@ object RationaleZahl {
 
     println(zahl1)
     println(zahl2)
-    println(zahl1.add(zahl2))
-    println(zahl3.multiply(zahl4))
+    println(zahl1 + zahl2)
+    println(zahl3 * zahl4)
     println(zahl1.equals(zahl3))
   }
 }
