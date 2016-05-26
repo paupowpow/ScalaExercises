@@ -22,6 +22,10 @@ case class KomplexeZahl(re: Double, im: Double) {
   override def toString = re + " + i * " + im
 }
 
+class DoubleComplex(val d: Double) {
+  def i(zahl1: Doub2 le) = KomplexeZahl(d, zahl1)
+}
+
 object KomplexeZahl {
   def main(args: Array[String]) {
     val zahl1 = KomplexeZahl(1.2, 1.5)
@@ -37,7 +41,16 @@ object KomplexeZahl {
     println(zahl1.invers)
     println(-zahl1)
 
+    implicit def doubleToDouble(d: Double) = new DoubleComplex(d)
+
+    val d1 = 3.4
+    val d2 = 1.2
+
+    println(d1.i(d2))
+    println(d1 i d2)
+
 
 
   }
 }
+
