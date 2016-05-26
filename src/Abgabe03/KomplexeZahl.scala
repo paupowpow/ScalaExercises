@@ -23,7 +23,7 @@ case class KomplexeZahl(re: Double, im: Double) {
 }
 
 class DoubleComplex(val d: Double) {
-  def i(zahl1: Doub2 le) = KomplexeZahl(d, zahl1)
+  def i(zahl1: Double) = KomplexeZahl(d, zahl1)
 }
 
 object KomplexeZahl {
