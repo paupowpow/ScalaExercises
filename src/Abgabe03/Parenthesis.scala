@@ -1,69 +1,57 @@
-  object Parenthesis {
+object Parenthesis {
 
-    def main(args: Array[String]){
-      val stack = List('a','b','c','d','e','f')
-      val string1 = "x(x(x))"
-      val string2 = "(a)(b())"
-      val string3 = "a("
-      val string4 = ")x("
-
-  //    println(balanced(string1.toList))
-  //    println(balanced(string2.toList))
-  //    println(balanced(string3.toList))
-  //    println(balanced(string4.toList))
-    }
-
-    def push(l: List[Char], x: Char): List[Char] = {
-      if(l.isEmpty){
-        List(x)
-      }
-      else{
-        x :: l
-      }
-    }
-
-    def pop(l: List[Char]): List[Char] = {
-      if(l.isEmpty){
-        List()
-      }
-      else{
-        l.tail
-      }
-    }
-
-    def peek(l: List[Char]) : Char = {
-      l.head
-    }
-
-  //  def balanced(l: List[Char]): Boolean = {
-  //    def go(cs: List[Char], level: Int): Boolean = cs match {
-  //        case Nil => level == 0
-  //        case ')' :: _ if level < 1 => false
-  //        case ')' :: xs => go(xs, level - 1)
-  //        case '(' :: xs => go(xs, level + 1)
-  //        case _ :: xs => go(xs, level)
-  //    }
-  //    go(l, 0)
-  //  }
-
-  //  def balanced(l: List[Char]): Boolean = {
-  //    def check_balanced(chars: List[Char], open_parenthesis: Int): Boolean = {
-  //      if (chars.isEmpty) {
-  //        open_parenthesis == 0
-  //      } else {
-  //        if (chars.head == "(") {
-  //          check_balanced(chars.tail, open_parenthesis+1)
-  //        } else {
-  //          if (chars.head == ")") {
-  //            open_parenthesis > 0 &&
-  //            check_balanced(chars.tail, open_parenthesis-1)
-  //          } else {
-  //            check_balanced(chars.tail, open_parenthesis)
-  //          }
-  //        }
-  //      }
-  //    }
-  //    check_balanced(l, 0)
-  //  }
-
+  def main(args: Array[String]){
+    val list = List('a','b','c','d','e','f')
+    val string = ")x("
+    println(balanced(string.toList))
   }
+
+  def push(l: List[Char], x: Char): List[Char] = {
+    if(l == Nil){
+      println(List(x))
+      List(x)
+    }
+    else {
+      println("head: " + l.head + ", tail: " + l.tail)
+      l.head :: push(l.tail, x)
+    }
+  }
+
+  def pop(l: List[Char]): List[Char] = {
+    if(l.isEmpty){
+      List()
+    }
+    else{
+      l.tail
+    }
+  }
+
+  def peek(l: List[Char]) : Char = {
+    l.head
+  }
+
+  def balanced(l: List[Char]): Boolean = {
+    val stack = List[Char]()
+    check(l, stack)
+  }
+
+  def check(l: List[Char], stack: List[Char]): Boolean = {
+    if(l.isEmpty){
+      stack.isEmpty
+    }
+    else if(l.head =='('){
+      println("stack: " + stack)
+      println("l.head: " + l.head)
+      check(l.tail, push(stack, l.head))
+    }
+    else if(l.head == ')' && stack.isEmpty){
+      false
+    }
+    else if(l.head == ')' && !stack.isEmpty){
+      check(l.tail, pop(stack))
+    }
+    else{
+      check(l.tail, stack)
+    }
+  }
+}
