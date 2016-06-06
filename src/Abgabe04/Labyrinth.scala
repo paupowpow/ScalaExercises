@@ -3,14 +3,14 @@ import scala.io.Source
 object Labyrinth {
   def main(args: Array[String]){
     Source
-      .fromFile("/Users/paulahaertel/Programmierung/ScalaExercises/src/Abgabe04/laby3.txt")
+      .fromFile("/Users/paulahaertel/Programmierung/ScalaExercises/src/Abgabe04/laby3-2.txt")
       .getLines
       .foreach { line =>
         //do stuff with line like
         println(line)
       }
 
-    val results = List(List())
+    var results = List(List())
 
     val lab = liesLab("laby3.txt")
     val start = findStart(lab)
@@ -25,7 +25,7 @@ object Labyrinth {
     def ost = Pos(x+1, y)
     def sued = Pos(x, y+1)
     def west = Pos(x-1, y)
-    override def toString = "(" + x + ", " + y + ")"
+    override def toString = "(" + y + ", " + x + ")"
   }
 
   type Labyrinth = Seq[Seq[Zelle]]
@@ -33,7 +33,7 @@ object Labyrinth {
   def liesLab(fu: String): Labyrinth = {
     try{
       (for(zeile <- Source
-        .fromFile("/Users/paulahaertel/Programmierung/ScalaExercises/src/Abgabe04/laby3.txt", "UTF-8").getLines.toList)
+        .fromFile("/Users/paulahaertel/Programmierung/ScalaExercises/src/Abgabe04/laby3-2.txt", "UTF-8").getLines.toList)
         yield
           for(c <- zeile) yield Zelle(c == ' ', c == '?')).toIndexedSeq
     }
@@ -84,7 +84,7 @@ object Labyrinth {
   def depthFirst(p: Pos, l: Labyrinth, visited: List[Pos], results: List[List[Pos]]): (Pos, List[List[Pos]]) = {
 
     if (istAusgang(p, l)){
-      appendList(results, visited)
+
       println(results)
       (p, results)
     }
@@ -95,33 +95,34 @@ object Labyrinth {
         gueltig(p.nord, l) &&
         freiPos(p.nord, l)
       ){
-        println(p + "north is free")
+        println(p + " north is free")
         depthFirst(p.nord, l, append(visited, p), results)
-      }
-      if(
-        !visited.contains(p.ost) &&
-        gueltig(p.ost, l) &&
-        freiPos(p.ost, l)
-      ){
-        println(p + "east is free")
-        depthFirst(p.ost, l, append(visited, p), results)
-      }
-      if(
-        !visited.contains(p.sued) &&
-        gueltig(p.sued, l) &&
-        freiPos(p.sued, l)
-      ){
-        println(p + "south is free")
-        depthFirst(p.sued, l, append(visited, p), results)
       }
       if(
         !visited.contains(p.west) &&
         gueltig(p.west,l) &&
         freiPos(p.west, l)
       ){
-        println(p + "west is free")
+        println(p + " west is free")
         depthFirst(p.west, l, append(visited, p), results)
       }
+      if(
+        !visited.contains(p.sued) &&
+        gueltig(p.sued, l) &&
+        freiPos(p.sued, l)
+      ){
+        println(p + " south is free")
+        depthFirst(p.sued, l, append(visited, p), results)
+      }
+      if(
+        !visited.contains(p.ost) &&
+        gueltig(p.ost, l) &&
+        freiPos(p.ost, l)
+      ){
+        println(p + " east is free")
+        depthFirst(p.ost, l, append(visited, p), results)
+      }
+      println(visited)
       (p, results)
     }
   }
@@ -141,10 +142,4 @@ object Labyrinth {
       l.head :: appendList(l.tail, l2)
     }
   }
-
-
-
-
-
-
 }
