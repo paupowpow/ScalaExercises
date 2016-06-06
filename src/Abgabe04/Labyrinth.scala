@@ -21,11 +21,11 @@ object Labyrinth {
   case class Zelle(frei: Boolean, start: Boolean)
 
   case class Pos(x: Int, y: Int){
-    def nord = Pos(x, y-1)
-    def ost = Pos(x+1, y)
-    def sued = Pos(x, y+1)
-    def west = Pos(x-1, y)
-    override def toString = "(" + y + ", " + x + ")"
+    def nord = Pos(x-1, y)
+    def ost = Pos(x, y+1)
+    def sued = Pos(x+1, y)
+    def west = Pos(x, y-1)
+    override def toString = "(" + x + ", " + y + ")"
   }
 
   type Labyrinth = Seq[Seq[Zelle]]
