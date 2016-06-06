@@ -10,13 +10,11 @@ object Labyrinth {
         println(line)
       }
 
+    val results = List(List())
 
     val lab = liesLab("laby3.txt")
     val start = findStart(lab)
-    println(append(List(), start))
-
-
-    depthFirst(start, lab, List[Pos]())
+    println(depthFirst(start, lab, List[Pos](), results))
 
   }
 
@@ -83,26 +81,48 @@ object Labyrinth {
     *End procedure
     */
 
-  def depthFirst(p: Pos, l: Labyrinth, visited: List[Pos]): Pos = {
+  def depthFirst(p: Pos, l: Labyrinth, visited: List[Pos], results: List[List[Pos]]): (Pos, List[List[Pos]]) = {
 
     if (istAusgang(p, l)){
-      println(visited)
-      p
+      appendList(results, visited)
+      println(results)
+      (p, results)
     }
     else{
-      if((!visited.contains(p.nord) && gueltig(p.nord, l) && freiPos(p.nord, l))){
-        depthFirst(p.nord, l, append(visited, p))
+      // !recursion!
+      if(
+        !visited.contains(p.nord) &&
+        gueltig(p.nord, l) &&
+        freiPos(p.nord, l)
+      ){
+        println(p + "north is free")
+        depthFirst(p.nord, l, append(visited, p), results)
       }
-      if((!visited.contains(p.ost) && gueltig(p.ost, l) && freiPos(p.ost, l))){
-        depthFirst(p.ost, l, append(visited, p))
+      if(
+        !visited.contains(p.ost) &&
+        gueltig(p.ost, l) &&
+        freiPos(p.ost, l)
+      ){
+        println(p + "east is free")
+        depthFirst(p.ost, l, append(visited, p), results)
       }
-      if((!visited.contains(p.sued) && gueltig(p.sued, l) && freiPos(p.sued, l))){
-        depthFirst(p.sued, l, append(visited, p))
+      if(
+        !visited.contains(p.sued) &&
+        gueltig(p.sued, l) &&
+        freiPos(p.sued, l)
+      ){
+        println(p + "south is free")
+        depthFirst(p.sued, l, append(visited, p), results)
       }
-      if((!visited.contains(p.west) && gueltig(p.west,l) && freiPos(p.west, l))){
-        depthFirst(p.west, l, append(visited, p))
+      if(
+        !visited.contains(p.west) &&
+        gueltig(p.west,l) &&
+        freiPos(p.west, l)
+      ){
+        println(p + "west is free")
+        depthFirst(p.west, l, append(visited, p), results)
       }
-      p
+      (p, results)
     }
   }
 
@@ -113,6 +133,17 @@ object Labyrinth {
       l.head :: append(l.tail, s)
     }
   }
+
+  def appendList(l: List[List[Pos]], l2: List[Pos]): List[List[Pos]] = {
+    if (l.isEmpty) {
+      List(l2)
+    } else {
+      l.head :: appendList(l.tail, l2)
+    }
+  }
+
+
+
 
 
 
