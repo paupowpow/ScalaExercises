@@ -90,35 +90,19 @@ object Labyrinth {
     }
     else{
       // !recursion!
-      if(
-        !visited.contains(p.nord) &&
-        gueltig(p.nord, l) &&
-        freiPos(p.nord, l)
-      ){
+      if( !visited.contains(p.nord) && gueltig(p.nord, l) && freiPos(p.nord, l)){
         println(p + " north is free")
         depthFirst(p.nord, l, append(visited, p), results)
       }
-      if(
-        !visited.contains(p.west) &&
-        gueltig(p.west,l) &&
-        freiPos(p.west, l)
-      ){
+      if( !visited.contains(p.west) && gueltig(p.west,l) && freiPos(p.west, l) ){
         println(p + " west is free")
         depthFirst(p.west, l, append(visited, p), results)
       }
-      if(
-        !visited.contains(p.sued) &&
-        gueltig(p.sued, l) &&
-        freiPos(p.sued, l)
-      ){
+      if( !visited.contains(p.sued) &&  gueltig(p.sued, l) && freiPos(p.sued, l) ){
         println(p + " south is free")
         depthFirst(p.sued, l, append(visited, p), results)
       }
-      if(
-        !visited.contains(p.ost) &&
-        gueltig(p.ost, l) &&
-        freiPos(p.ost, l)
-      ){
+      if( !visited.contains(p.ost) && gueltig(p.ost, l) && freiPos(p.ost, l)){
         println(p + " east is free")
         depthFirst(p.ost, l, append(visited, p), results)
       }
