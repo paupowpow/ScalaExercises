@@ -90,16 +90,16 @@ object Labyrinth {
       p
     }
     else{
-      if((!visited.contains(p.nord) && gueltig(p.nord, l))){
+      if((!visited.contains(p.nord) && gueltig(p.nord, l) && freiPos(p.nord, l))){
         depthFirst(p.nord, l, append(visited, p))
       }
-      if((!visited.contains(p.ost) && gueltig(p.ost, l))){
+      if((!visited.contains(p.ost) && gueltig(p.ost, l) && freiPos(p.ost, l))){
         depthFirst(p.ost, l, append(visited, p))
       }
-      if((!visited.contains(p.sued) && gueltig(p.sued, l))){
+      if((!visited.contains(p.sued) && gueltig(p.sued, l) && freiPos(p.sued, l))){
         depthFirst(p.sued, l, append(visited, p))
       }
-      if((!visited.contains(p.west) && gueltig(p.west,l))){
+      if((!visited.contains(p.west) && gueltig(p.west,l) && freiPos(p.west, l))){
         depthFirst(p.west, l, append(visited, p))
       }
       p
